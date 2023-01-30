@@ -1,3 +1,4 @@
+<%@ page import="Sprint_Task4_2.User" %>
 <nav class="navbar navbar-expand-lg bg-body-tertiary ">
   <div class="container-fluid">
     <a class="navbar-brand" href="/Main"><p class="fw-bold" style="margin-left: 100px; margin-top: 15px">BITLAB SHOP</p></a>
@@ -12,9 +13,22 @@
         <li class="nav-item">
           <a class="nav-link" href="#">By Category</a>
         </li>
+        <%
+          User user=(User) session.getAttribute("id");
+          if (user==null){
+        %>
         <li class="nav-item">
           <a class="nav-link" href="/SingIn">Sing in</a>
         </li>
+        <%
+          }else{
+        %>
+        <li class="nav-item">
+          <a class="nav-link" href="/YourProfile?id=<%=user.getId()%>"><%=user.getFullName()%></a>
+        </li>
+        <%
+          }
+        %>
       </ul>
     </div>
   </div>
